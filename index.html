@@ -15,24 +15,32 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
+            text-align: center;
         }
+
         .promo {
             background: rgba(0,0,0,0.7);
             padding: 40px 30px;
             border-radius: 20px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
             text-align: center;
+            animation: fadeIn 1s ease-out;
         }
+
         h1 {
             font-size: 3rem;
             margin-bottom: 20px;
             color: #ffea00;
             text-shadow: 2px 2px 8px #000;
         }
+
         p {
             font-size: 1.5rem;
             margin-bottom: 30px;
         }
+
         a.button {
             background: #ff0000;
             color: #fff;
@@ -42,20 +50,57 @@
             font-weight: bold;
             text-decoration: none;
             box-shadow: 0 4px 16px rgba(255,0,0,0.3);
-            transition: background 0.2s, transform 0.2s;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.3s ease;
             display: inline-block;
+            position: relative;
         }
+
+        a.button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
         a.button:hover {
             background: #cc0000;
             transform: scale(1.08);
+            box-shadow: 0 8px 32px rgba(255,0,0,0.6);
         }
+
+        a.button:hover::before {
+            opacity: 1;
+        }
+
         .yt-logo {
             width: 80px;
             margin-bottom: 20px;
+            transition: transform 0.2s ease;
         }
+
+        .yt-logo:hover {
+            transform: scale(1.1);
+        }
+
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
             .promo { padding: 20px 10px; }
+            a.button {
+                font-size: 1.2rem;
+                padding: 15px 30px;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -69,4 +114,4 @@
         <p style="margin-top:30px;font-size:1.1rem;opacity:0.8;">Kliknij przycisk powyżej i nie przegap żadnego nowego kawałka!</p>
     </div>
 </body>
-</html> 
+</html>
